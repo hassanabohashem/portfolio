@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Alhassan Ahmed — Data Scientist · Machine Learning Engineer</title>
+<meta name="description" content="Portfolio of Alhassan Ahmed — Data Scientist & Machine Learning Engineer. End-to-end AI systems: ML/DL, NLP, computer vision, LLM/RAG applications, and on-device deployment." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0f1c;
+  --bg-soft:#0e1526;
+  --surface:#121b30;
+  --line:#1e2a45;
+  --text:#dce6f5;
+  --muted:#8b9ab5;
+  --accent:#2ee6b8;          /* ECG-monitor green */
+  --accent-dim:rgba(46,230,184,.12);
+  --accent-line:rgba(46,230,184,.35);
+  --display:'Sora',sans-serif;
+  --body:'Manrope',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--body);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--accent);color:#04120d}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* ---------- Nav ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,15,28,.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1080px;margin:0 auto;padding:0 24px;
+  height:68px;display:flex;align-items:center;justify-content:space-between;
+}
+.logo{
+  font-family:var(--mono);font-weight:600;font-size:1.05rem;
+  color:var(--accent);
+  border:1.5px solid var(--accent);
+  padding:4px 10px;border-radius:6px;
+}
+.nav-links{display:flex;gap:26px;align-items:center;list-style:none}
+.nav-links a{
+  font-family:var(--mono);font-size:.8rem;color:var(--text);
+  transition:color .2s;
+}
+.nav-links a .n{color:var(--accent);margin-right:4px}
+.nav-links a:hover{color:var(--accent)}
+.cv-btn{
+  font-family:var(--mono);font-size:.8rem;
+  color:var(--accent);border:1px solid var(--accent);
+  padding:8px 18px;border-radius:6px;transition:background .2s;
+}
+.cv-btn:hover{background:var(--accent-dim)}
+.burger{display:none;background:none;border:none;color:var(--accent);font-size:1.6rem;cursor:pointer}
+
+/* ---------- Hero ---------- */
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  padding:120px 0 60px;
+}
+.hero-ecg{
+  position:absolute;inset:auto 0 12% 0;width:100%;height:120px;
+  opacity:.5;pointer-events:none;
+}
+.hero-ecg path{
+  fill:none;stroke:var(--accent);stroke-width:2;
+  stroke-dasharray:2400;stroke-dashoffset:2400;
+  animation:ecg 6s linear infinite;
+  filter:drop-shadow(0 0 6px var(--accent-line));
+}
+@keyframes ecg{to{stroke-dashoffset:0}}
+.hero-eyebrow{
+  font-family:var(--mono);color:var(--accent);
+  font-size:.95rem;margin-bottom:18px;
+}
+h1{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(2.6rem,7vw,4.6rem);
+  line-height:1.05;letter-spacing:-.02em;
+}
+.hero-sub{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(1.6rem,4.5vw,2.8rem);
+  color:var(--muted);line-height:1.15;margin-top:8px;
+}
+.hero-desc{
+  max-width:600px;margin-top:26px;color:var(--muted);font-size:1.06rem;
+}
+.hero-actions{margin-top:36px;display:flex;gap:18px;flex-wrap:wrap}
+.btn{
+  font-family:var(--mono);font-size:.9rem;border-radius:8px;
+  padding:14px 26px;display:inline-block;transition:.2s;
+}
+.btn-primary{background:var(--accent);color:#04120d;font-weight:600}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px var(--accent-line)}
+.btn-ghost{border:1px solid var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.hero-tags{margin-top:44px;display:flex;gap:10px;flex-wrap:wrap}
+.hero-tags span{
+  font-family:var(--mono);font-size:.75rem;color:var(--muted);
+  border:1px solid var(--line);padding:5px 12px;border-radius:999px;
+}
+
+/* ---------- Sections ---------- */
+section{padding:110px 0}
+.sec-eyebrow{
+  font-family:var(--mono);color:var(--accent);font-size:.9rem;
+  display:flex;align-items:center;gap:14px;margin-bottom:14px;
+}
+.sec-eyebrow::after{content:"";height:1px;width:120px;background:var(--line)}
+h2{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(1.7rem,4vw,2.4rem);letter-spacing:-.01em;
+  margin-bottom:34px;
+}
+
+/* ---------- About ---------- */
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start}
+.about-text p{color:var(--muted);margin-bottom:16px}
+.about-text strong{color:var(--text);font-weight:600}
+.focus-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.focus-card{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:12px;padding:20px 18px;transition:.2s;
+}
+.focus-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.focus-card h3{font-family:var(--display);font-size:.98rem;margin-bottom:6px;color:var(--accent)}
+.focus-card p{font-size:.85rem;color:var(--muted)}
+
+/* ---------- Experience ---------- */
+.xp-item{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;padding:30px 28px;margin-bottom:22px;transition:.2s;
+}
+.xp-item:hover{border-color:var(--accent-line)}
+.xp-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+.xp-title{font-family:var(--display);font-size:1.12rem;font-weight:600}
+.xp-title span{color:var(--accent)}
+.xp-date{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.xp-badge{
+  font-family:var(--mono);font-size:.72rem;color:var(--accent);
+  background:var(--accent-dim);padding:3px 10px;border-radius:999px;
+  display:inline-block;margin-bottom:12px;
+}
+.xp-item ul{list-style:none;margin-top:10px}
+.xp-item li{
+  color:var(--muted);font-size:.95rem;padding-left:22px;position:relative;margin-bottom:8px;
+}
+.xp-item li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.tags span{
+  font-family:var(--mono);font-size:.72rem;color:var(--accent);
+  background:var(--accent-dim);padding:4px 11px;border-radius:999px;
+}
+
+/* ---------- Projects ---------- */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px}
+.filters button{
+  font-family:var(--mono);font-size:.8rem;cursor:pointer;
+  background:none;border:1px solid var(--line);color:var(--muted);
+  padding:8px 18px;border-radius:999px;transition:.2s;
+}
+.filters button:hover{color:var(--accent);border-color:var(--accent)}
+.filters button.active{background:var(--accent);color:#04120d;border-color:var(--accent);font-weight:600}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.proj{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;padding:28px;display:flex;flex-direction:column;transition:.2s;
+}
+.proj:hover{border-color:var(--accent-line);transform:translateY(-4px)}
+.proj.flagship{grid-column:1/-1;border-color:var(--accent-line)}
+.proj-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:10px;flex-wrap:wrap}
+.proj-cat{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+.flag-badge{
+  font-family:var(--mono);font-size:.72rem;font-weight:600;
+  color:#04120d;background:var(--accent);padding:3px 12px;border-radius:999px;
+}
+.proj h3{font-family:var(--display);font-size:1.25rem;margin-bottom:8px}
+.proj > p{color:var(--muted);font-size:.95rem}
+.proj-details{display:none;margin-top:20px;border-top:1px solid var(--line);padding-top:20px}
+.proj-details.open{display:block}
+.proj-details h4{
+  font-family:var(--mono);font-size:.8rem;color:var(--accent);
+  text-transform:uppercase;letter-spacing:.08em;margin:16px 0 8px;
+}
+.proj-details h4:first-child{margin-top:0}
+.proj-details p,.proj-details li{color:var(--muted);font-size:.92rem}
+.proj-details ul{list-style:none}
+.proj-details li{padding-left:20px;position:relative;margin-bottom:6px}
+.proj-details li::before{content:"–";position:absolute;left:0;color:var(--accent)}
+.metric-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:14px;margin-top:22px;
+}
+.metric{
+  background:var(--bg);border:1px solid var(--line);border-radius:12px;
+  padding:18px 16px;display:flex;flex-direction:column;gap:4px;transition:.2s;
+}
+.metric:hover{border-color:var(--accent)}
+.metric-val{
+  font-family:var(--display);font-weight:800;font-size:1.7rem;
+  color:var(--accent);line-height:1;
+}
+.metric-name{font-family:var(--mono);font-size:.74rem;color:var(--text);margin-top:6px}
+.metric-sub{font-size:.76rem;color:var(--muted);line-height:1.5}
+.detail-toggle{
+  margin-top:18px;background:none;border:none;cursor:pointer;
+  font-family:var(--mono);font-size:.82rem;color:var(--accent);
+  align-self:flex-start;padding:0;
+}
+.detail-toggle:hover{text-decoration:underline}
+
+/* ---------- Skills ---------- */
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.skill-cat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px}
+.skill-cat h3{
+  font-family:var(--display);font-size:1rem;margin-bottom:14px;
+  display:flex;justify-content:space-between;align-items:baseline;
+}
+.skill-cat h3 em{font-family:var(--mono);font-style:normal;font-size:.8rem;color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{
+  font-family:var(--mono);font-size:.75rem;color:var(--text);
+  border:1px solid var(--line);padding:5px 12px;border-radius:999px;transition:.2s;
+}
+.chips span:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ---------- Education / Certs / Achievements ---------- */
+.edu-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:30px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+}
+.edu-card h3{font-family:var(--display);font-size:1.15rem;margin-bottom:6px}
+.edu-card p{color:var(--muted)}
+.edu-date{font-family:var(--mono);font-size:.82rem;color:var(--accent)}
+.cert-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+.cert{
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;
+}
+.cert h4{font-family:var(--display);font-size:.95rem;margin-bottom:6px}
+.cert p{color:var(--muted);font-size:.84rem}
+.cert .yr{font-family:var(--mono);font-size:.74rem;color:var(--accent)}
+.ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.ach{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px;text-align:left;
+}
+.ach .place{font-family:var(--display);font-weight:700;font-size:1.5rem;color:var(--accent)}
+.ach h3{font-family:var(--display);font-size:1rem;margin:10px 0 4px}
+.ach p{color:var(--muted);font-size:.88rem}
+.ach .loc{font-family:var(--mono);font-size:.74rem;color:var(--muted);display:block;margin-bottom:8px}
+
+/* ---------- Contact ---------- */
+#contact{text-align:center}
+#contact .sec-eyebrow{justify-content:center}
+#contact .sec-eyebrow::after{display:none}
+#contact h2{margin-bottom:12px}
+#contact > .container > p{color:var(--muted);max-width:520px;margin:0 auto 40px}
+.contact-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.contact-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:18px 26px;font-family:var(--mono);font-size:.85rem;transition:.2s;
+}
+.contact-card b{display:block;color:var(--accent);font-weight:600;margin-bottom:2px}
+.contact-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+
+/* ---------- Footer ---------- */
+footer{
+  border-top:1px solid var(--line);padding:36px 0;text-align:center;
+  color:var(--muted);font-family:var(--mono);font-size:.78rem;
+}
+footer .f-name{color:var(--text);font-family:var(--display);font-size:.95rem;margin-bottom:4px}
+footer .f-links{margin-top:14px;display:flex;gap:20px;justify-content:center}
+footer .f-links a:hover{color:var(--accent)}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .hero-ecg path{animation:none;stroke-dashoffset:0}
+  *{transition:none!important}
+}
+
+/* ---------- Responsive ---------- */
+@media(max-width:860px){
+  .about-grid{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .cert-list{grid-template-columns:1fr}
+  .nav-links{
+    position:fixed;top:68px;right:0;flex-direction:column;
+    background:var(--bg-soft);border-left:1px solid var(--line);
+    padding:30px;height:calc(100vh - 68px);width:min(75vw,300px);
+    transform:translateX(100%);transition:transform .3s;align-items:flex-start;
+  }
+  .nav-links.open{transform:none}
+  .burger{display:block}
+  section{padding:80px 0}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#hero">AA</a>
+    <button class="burger" aria-label="Open menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <ul class="nav-links">
+      <li><a href="#about"><span class="n">01.</span>About</a></li>
+      <li><a href="#experience"><span class="n">02.</span>Experience</a></li>
+      <li><a href="#projects"><span class="n">03.</span>Projects</a></li>
+      <li><a href="#skills"><span class="n">04.</span>Skills</a></li>
+      <li><a href="#education"><span class="n">05.</span>Education</a></li>
+      <li><a href="#contact"><span class="n">06.</span>Contact</a></li>
+      <li><a class="cv-btn" href="ALHASSAN.pdf" target="_blank">CV</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header id="hero">
+  <svg class="hero-ecg" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,60 L120,60 L140,60 L150,40 L160,80 L170,60 L260,60 L280,60 L292,10 L304,110 L316,60 L420,60 L440,60 L450,45 L460,75 L470,60 L580,60 L600,60 L612,15 L624,105 L636,60 L760,60 L780,60 L790,42 L800,78 L810,60 L920,60 L940,60 L952,12 L964,108 L976,60 L1080,60 L1200,60"/>
+  </svg>
+  <div class="container">
+    <p class="hero-eyebrow">Hi, my name is</p>
+    <h1>Alhassan Ahmed.</h1>
+    <p class="hero-sub">I turn data into intelligent products.</p>
+    <p class="hero-desc">
+      I'm a <strong>Data Scientist & Machine Learning Engineer</strong> who builds and ships
+      end-to-end AI systems — predictive modeling, NLP and computer vision, <strong>LLM/RAG applications</strong>,
+      and on-device deployment with ONNX Runtime, FastAPI and Docker.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">Check out my work →</a>
+      <a class="btn btn-ghost" href="#contact">or get in touch ↘</a>
+    </div>
+    <div class="hero-tags">
+      <span>Machine Learning</span><span>Deep Learning</span><span>NLP</span><span>LLMs & RAG</span>
+      <span>Computer Vision</span><span>On-Device AI</span><span>Backend</span>
+    </div>
+  </div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="container reveal">
+    <p class="sec-eyebrow">01. About Me</p>
+    <h2>I build AI that runs in the real world.</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a <strong>Data Science and Machine Learning graduate</strong> (B.Sc. Computer Science, 2026) from <strong>Future University in Egypt</strong> who builds and ships end-to-end AI systems — data preprocessing, predictive modeling, NLP and computer vision, <strong>LLM/RAG applications</strong>, and on-device deployment via <strong>ONNX Runtime, FastAPI, and Docker</strong>.</p>
+        <p>My graduation project is a wearable health-monitoring platform combining a <strong>0.971 macro-AUC</strong> fall-detection CNN, a <strong>64 KB on-device cardiac classifier</strong>, and a bilingual <strong>RAG clinical assistant</strong> that passed a 64-prompt safety evaluation at <strong>100%</strong>.</p>
+        <p>I'm internationally recognized in <strong>RoboCup rescue robotics</strong>, and I'm ready to convert raw sensor, financial, and text data into <strong>deployed, measurable products</strong>.</p>
+      </div>
+      <div class="focus-cards">
+        <div class="focus-card"><h3>Machine Learning</h3><p>End-to-end ML/DL pipelines from raw data to evaluated, deployed models.</p></div>
+        <div class="focus-card"><h3>On-Device AI</h3><p>ONNX Runtime models with sub-10 ms inference, running fully offline.</p></div>
+        <div class="focus-card"><h3>NLP & LLMs</h3><p>Sentiment analysis, text mining, and RAG-grounded clinical assistants.</p></div>
+        <div class="focus-card"><h3>Backend Engineering</h3><p>ASP.NET Core, FastAPI, RESTful APIs, SQL Server & MongoDB.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience" style="background:var(--bg-soft)">
+  <div class="container reveal">
+    <p class="sec-eyebrow">02. Experience</p>
+    <h2>Where I've worked.</h2>
+
+    <div class="xp-item">
+      <div class="xp-head">
+        <p class="xp-title">Rescue Robotics Competitor <span>@ RoboCup Junior</span></p>
+        <p class="xp-date">2024 · Germany</p>
+      </div>
+      <span class="xp-badge">2nd Place (Egypt) · 1st & 3rd Place (Europe)</span>
+      <ul>
+        <li>Won 2nd place in Egypt and 1st & 3rd place in the European rounds by building autonomous rescue robots in Python with OpenCV and NumPy.</li>
+        <li>Improved real-time victim-detection performance by optimizing computer-vision pipelines under strict on-board compute constraints.</li>
+        <li>Mentored new team members and presented solutions at international workshops, strengthening team output across competition seasons.</li>
+      </ul>
+      <div class="tags"><span>Python</span><span>OpenCV</span><span>NumPy</span><span>Robotics</span></div>
+    </div>
+
+    <div class="xp-item">
+      <div class="xp-head">
+        <p class="xp-title">Data Science & AI Trainee <span>@ Instant</span></p>
+        <p class="xp-date">2026</p>
+      </div>
+      <ul>
+        <li>Prepared modeling-ready datasets by performing data cleaning, preprocessing, and feature engineering with Pandas and NumPy.</li>
+        <li>Trained and fine-tuned machine learning and deep learning models, and evaluated them with precision, recall, F1-score, and ROC-AUC to select the best performers.</li>
+        <li>Built NLP models for sentiment extraction and delivered interactive dashboards that communicated predictions for business and healthcare use cases.</li>
+      </ul>
+      <div class="tags"><span>Pandas</span><span>Scikit-learn</span><span>TensorFlow</span><span>NLP</span><span>Dashboards</span></div>
+    </div>
+
+    <div class="xp-item">
+      <div class="xp-head">
+        <p class="xp-title">Backend Developer <span>@ Academic Projects</span></p>
+      </div>
+      <ul>
+        <li>Shipped full-stack web applications with ASP.NET Core MVC and C#, exposing ML/AI model outputs through RESTful APIs.</li>
+        <li>Reduced query response times by optimizing database access across MongoDB and SQL Server.</li>
+      </ul>
+      <div class="tags"><span>ASP.NET Core</span><span>C#</span><span>SQL Server</span><span>MongoDB</span><span>REST APIs</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <div class="container reveal">
+    <p class="sec-eyebrow">03. Projects</p>
+    <h2>Selected work.</h2>
+    <div class="filters">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="health">Healthcare AI</button>
+      <button data-filter="ml">Machine Learning</button>
+      <button data-filter="nlp">NLP</button>
+      <button data-filter="data">Data & BI</button>
+      <button data-filter="deploy">Deployment</button>
+    </div>
+
+    <div class="proj-grid">
+
+      <!-- Flagship -->
+      <article class="proj flagship" data-cat="health ml deploy">
+        <div class="proj-top">
+          <span class="flag-badge">Flagship · Graduation Project</span>
+          <span class="proj-cat">Healthcare AI · Future University in Egypt · Spring 2026</span>
+        </div>
+        <h3>Smart Health Monitoring System</h3>
+        <p>End-to-end AI health platform for elderly and chronically ill users: <strong>on-device deep learning</strong> for fall detection, activity recognition, and ECG classification, paired with an <strong>LLM/RAG clinical assistant</strong>, wearable sensor integration, geofencing, and automatic emergency escalation.</p>
+
+        <div class="metric-grid">
+          <div class="metric">
+            <span class="metric-val">0.971</span>
+            <span class="metric-name">Macro-AUC — Fall Detection</span>
+            <span class="metric-sub">FusionNet dual-stream 1D-CNN · 9-fold LOSO · ~3.5% false-positive rate</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val">94.4%</span>
+            <span class="metric-name">Activity Recognition Accuracy</span>
+            <span class="metric-sub">Dual-head 1D-CNN · 95.9% bout-voted · WISDM, subject-independent</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val">0.96</span>
+            <span class="metric-name">ECG N-Recall — 64 KB Model</span>
+            <span class="metric-sub">Student-CNN cardiac beat classifier · held-out Lead-I evaluation</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val">100%</span>
+            <span class="metric-name">Safety Evaluation Pass Rate</span>
+            <span class="metric-sub">Clinical assistant · Llama 3.3 70B + rules engine · 64-prompt suite</span>
+          </div>
+        </div>
+
+        <div class="proj-details open" id="flagship-details">
+          <h4>Core features</h4>
+          <ul>
+            <li>Real-time <strong>fall detection</strong>, <strong>activity recognition</strong>, and <strong>ECG beat classification</strong> — all running offline on the phone.</li>
+            <li>Bilingual (English / Arabic) <strong>clinical assistant</strong> grounded in a curated medical corpus, with RAG, drug-interaction and red-flag detection.</li>
+            <li><strong>Geofencing</strong>, <strong>SOS alerts</strong>, and automatic <strong>emergency escalation</strong> to caregivers.</li>
+          </ul>
+          <h4>Engineering highlights</h4>
+          <ul>
+            <li>Compressed the cardiac beat classifier to a <strong>64 KB on-device model</strong> by applying <strong>knowledge distillation</strong> (Student-CNN) from a larger teacher network.</li>
+            <li>All three on-device models run offline via <strong>ONNX Runtime</strong> (sub-millisecond to sub-10 ms inference), keeping raw sensor data private on the device.</li>
+            <li>End-to-end validation on real hardware (<strong>Samsung Galaxy Watch 5</strong>), including a staged physical fall triggering the full alert-and-escalation path.</li>
+            <li><strong>Defence-in-depth safety architecture</strong> with deterministic emergency flagging and graceful degradation under model-provider failures.</li>
+          </ul>
+        </div>
+        <button class="detail-toggle" data-target="flagship-details">Hide details ↑</button>
+        <div class="tags">
+          <span>Python</span><span>PyTorch</span><span>TensorFlow / Keras</span><span>ONNX Runtime</span>
+          <span>FAISS</span><span>Groq (Llama 3.3 70B)</span><span>Llama Guard</span><span>FastAPI</span>
+          <span>Supabase (PostgreSQL)</span><span>React Native</span><span>Expo</span><span>TypeScript</span>
+          <span>Kotlin (Wear OS)</span><span>Docker</span><span>Hugging Face Spaces</span>
+        </div>
+      </article>
+
+      <article class="proj" data-cat="ml">
+        <div class="proj-top"><span class="proj-cat">Machine Learning</span></div>
+        <h3>Credit Risk & Loan Approval Prediction</h3>
+        <p>Predicted loan approval outcomes and quantified credit risk from customer financial data by engineering features, encoding categorical variables, and benchmarking Scikit-learn classifiers with ROC-AUC and F1-score.</p>
+        <div class="tags"><span>Python</span><span>Pandas</span><span>Scikit-learn</span></div>
+      </article>
+
+      <article class="proj" data-cat="ml">
+        <div class="proj-top"><span class="proj-cat">Machine Learning</span></div>
+        <h3>Customer Churn Prediction</h3>
+        <p>Identified customers at risk of churning from behavioral and transactional data by training and comparing classification models, enabling targeted retention decisions.</p>
+        <div class="tags"><span>Python</span><span>Pandas</span><span>Scikit-learn</span></div>
+      </article>
+
+      <article class="proj" data-cat="ml">
+        <div class="proj-top"><span class="proj-cat">Machine Learning</span></div>
+        <h3>Fraud Detection System</h3>
+        <p>Flagged fraudulent transactions on a highly imbalanced dataset by applying resampling strategies and optimizing the precision-recall trade-off to minimize missed fraud cases.</p>
+        <div class="tags"><span>Python</span><span>Scikit-learn</span><span>Imbalanced Data</span></div>
+      </article>
+
+      <article class="proj" data-cat="ml health">
+        <div class="proj-top"><span class="proj-cat">Healthcare AI</span></div>
+        <h3>Diabetes Risk Prediction</h3>
+        <p>Predicted diabetes risk from patient health records by running a complete ML workflow: data cleaning, feature engineering, model training, and evaluation with precision, recall, and ROC-AUC.</p>
+        <div class="tags"><span>Python</span><span>Scikit-learn</span><span>Feature Engineering</span></div>
+      </article>
+
+      <article class="proj" data-cat="nlp">
+        <div class="proj-top"><span class="proj-cat">NLP</span></div>
+        <h3>NLP-Based Customer Feedback Analysis</h3>
+        <p>Extracted sentiment and recurring complaint themes from customer reviews by building an NLP pipeline with text preprocessing and TF-IDF vectorization, turning unstructured feedback into ranked, actionable insights.</p>
+        <div class="tags"><span>Python</span><span>NLP</span><span>TF-IDF</span></div>
+      </article>
+
+      <article class="proj" data-cat="data">
+        <div class="proj-top"><span class="proj-cat">Data & BI</span></div>
+        <h3>Business Performance Dashboard</h3>
+        <p>Tracked revenue, profit, and core business KPIs in interactive Power BI dashboards by modeling data with SQL and Python, giving stakeholders a single self-serve view of performance.</p>
+        <div class="tags"><span>Power BI</span><span>SQL</span><span>Python</span></div>
+      </article>
+
+      <article class="proj" data-cat="deploy ml">
+        <div class="proj-top"><span class="proj-cat">Deployment</span></div>
+        <h3>ML Model Deployment (REST API)</h3>
+        <p>Served real-time predictions from a trained machine learning model by containerizing a FastAPI/Flask REST API with Docker, demonstrating a production-style deployment workflow.</p>
+        <div class="tags"><span>Flask / FastAPI</span><span>Docker</span><span>REST API</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills" style="background:var(--bg-soft)">
+  <div class="container reveal">
+    <p class="sec-eyebrow">04. Skills</p>
+    <h2>Technical toolbox.</h2>
+    <div class="skill-grid">
+      <div class="skill-cat">
+        <h3>Programming & Databases <em>12</em></h3>
+        <div class="chips">
+          <span>Python</span><span>Java</span><span>C++</span><span>C#</span><span>JavaScript</span>
+          <span>TypeScript</span><span>Kotlin</span><span>SQL</span><span>SQL Server</span>
+          <span>PostgreSQL</span><span>MongoDB</span><span>EF Core</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>Data Science, ML & AI <em>13</em></h3>
+        <div class="chips">
+          <span>Pandas</span><span>NumPy</span><span>Scikit-learn</span><span>TensorFlow</span><span>Keras</span>
+          <span>PyTorch</span><span>ONNX Runtime</span><span>EDA</span><span>ANN / CNN</span>
+          <span>Computer Vision</span><span>Knowledge Distillation</span><span>Imbalanced Data</span><span>Model Evaluation</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>NLP & LLMs <em>8</em></h3>
+        <div class="chips">
+          <span>NLP</span><span>TF-IDF</span><span>Sentiment Analysis</span><span>LLMs (Llama 3.3 70B)</span>
+          <span>RAG</span><span>FAISS Vector Search</span><span>Prompt Engineering</span><span>LLM Safety (Llama Guard)</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>Backend & Deployment <em>8</em></h3>
+        <div class="chips">
+          <span>ASP.NET Core MVC</span><span>RESTful APIs</span><span>FastAPI</span><span>Flask</span>
+          <span>Docker</span><span>Hugging Face Spaces</span><span>Supabase</span><span>Postman</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>Visualization & Tools <em>7</em></h3>
+        <div class="chips">
+          <span>Matplotlib</span><span>Seaborn</span><span>Power BI</span><span>Git / GitHub</span>
+          <span>Jupyter</span><span>Google Colab</span><span>VS Code</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h3>Engineering Practice <em>5</em></h3>
+        <div class="chips">
+          <span>Clean Code</span><span>SOLID Principles</span><span>Problem Solving</span>
+          <span>Technical Communication</span><span>Teamwork</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section id="education">
+  <div class="container reveal">
+    <p class="sec-eyebrow">05. Education</p>
+    <h2>Academic foundation.</h2>
+    <div class="edu-card">
+      <div>
+        <h3>Future University in Egypt</h3>
+        <p>B.Sc. in Computer Science — Data Science, Machine Learning & AI focus · Cairo, Egypt</p>
+      </div>
+      <span class="edu-date">2022 — 2026</span>
+    </div>
+
+    <h2 style="margin-top:70px">Certifications & training.</h2>
+    <div class="cert-list">
+      <div class="cert"><h4>Data Science & AI Training</h4><p>Python, Data Analysis, ML, Deep Learning, Visualization, Feature Engineering, Model Evaluation, TensorFlow & Keras.</p><span class="yr">Instant · 2026</span></div>
+      <div class="cert"><h4>NVIDIA Deep Learning AI Fundamentals</h4><p>Deep Learning, Convolutional Neural Networks, and GPU acceleration.</p><span class="yr">NVIDIA · 2026</span></div>
+      <div class="cert"><h4>Red Hat NLP & AI Solutions</h4><p>Natural Language Processing, Text Mining, and AI-powered applications.</p><span class="yr">2025</span></div>
+      <div class="cert"><h4>Power BI for Data Analysis</h4><p>Interactive dashboards, data visualization, and business intelligence.</p><span class="yr">2025</span></div>
+      <div class="cert"><h4>Data Analysis with Python</h4><p>Data cleaning, exploratory data analysis (EDA), and visualization.</p><span class="yr">2025</span></div>
+      <div class="cert"><h4>Introduction to AI & Machine Learning</h4><p>Udemy foundations course in AI & ML.</p><span class="yr">2024</span></div>
+      <div class="cert"><h4>Python Programming — 50 Hours</h4><p>Impact Platform, Zewail University.</p><span class="yr">2023</span></div>
+    </div>
+
+    <h2 style="margin-top:70px">Achievements.</h2>
+    <div class="ach-grid">
+      <div class="ach">
+        <p class="place">1st & 3rd</p>
+        <span class="loc">Europe · 2024</span>
+        <h3>RoboCup Junior — Rescue Robotics</h3>
+        <p>Top European placements with autonomous rescue robots built on Python, OpenCV and NumPy.</p>
+      </div>
+      <div class="ach">
+        <p class="place">2nd</p>
+        <span class="loc">Egypt · 2024</span>
+        <h3>RoboCup Junior — National Round</h3>
+        <p>National runner-up, qualifying to represent Egypt at the international competition in Germany.</p>
+      </div>
+      <div class="ach">
+        <p class="place">Mentor</p>
+        <span class="loc">International Workshops</span>
+        <h3>Knowledge Sharing</h3>
+        <p>Mentored new participants and presented solutions at international robotics workshops.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" style="background:var(--bg-soft)">
+  <div class="container reveal">
+    <p class="sec-eyebrow">06. Contact</p>
+    <h2>Let's build something intelligent.</h2>
+    <p>Open to Data Science, Machine Learning & AI Engineering opportunities. My inbox is always open — whether it's a role, a project, or just a question.</p>
+    <div class="contact-links">
+      <a class="contact-card" href="mailto:hassan.abohashem77@gmail.com"><b>Email</b>hassan.abohashem77@gmail.com</a>
+      <a class="contact-card" href="tel:+201114412600"><b>Phone</b>(+20) 111 441 2600</a>
+      <a class="contact-card" href="https://linkedin.com/in/hassanahashim" target="_blank" rel="noopener"><b>LinkedIn</b>linkedin.com/in/hassanahashim</a>
+      <a class="contact-card" href="https://github.com/hassanabohashem" target="_blank" rel="noopener"><b>GitHub</b>github.com/hassanabohashem</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="f-name">Alhassan Ahmed</p>
+  <p>Data Scientist · Machine Learning Engineer · Cairo, Egypt</p>
+  <div class="f-links">
+    <a href="https://github.com/hassanabohashem" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com/in/hassanahashim" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:hassan.abohashem77@gmail.com">Email</a>
+  </div>
+  <p style="margin-top:14px">© 2026 — Designed & built with care.</p>
+</footer>
+
+<script>
+// Scroll reveal
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Project filters
+const buttons = document.querySelectorAll('.filters button');
+const projects = document.querySelectorAll('.proj');
+buttons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    buttons.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    projects.forEach(p=>{
+      p.style.display = (f==='all' || p.dataset.cat.split(' ').includes(f)) ? 'flex' : 'none';
+    });
+  });
+});
+
+// Detail toggles
+document.querySelectorAll('.detail-toggle').forEach(t=>{
+  t.addEventListener('click',()=>{
+    const d = document.getElementById(t.dataset.target);
+    const open = d.classList.toggle('open');
+    t.textContent = open ? 'Hide details ↑' : 'View details ↓';
+  });
+});
+
+// Close mobile menu on link click
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open'));
+});
+</script>
+</body>
+</html>
